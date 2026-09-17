@@ -5,10 +5,10 @@ on:
     outputs:
       node-version:
         description: "Node version used"
-        value: ${{ jobs.setup.outputs.node-version }}
+        value: ${{ jobs.install.outputs.node-version }}
 
 jobs:
-  setup:
+  install:
     runs-on: ubuntu-latest
     outputs:
       node-version: ${{ steps.node.outputs.version }}
@@ -17,12 +17,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js
-        id: node
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "26"
           cache: "npm"
-        run: echo "version=18" >> $GITHUB_OUTPUT
+
+      - name: Record Node version
+        id: node
+        run: echo "version=26" >> $GITHUB_OUTPUT
 
       - name: Install dependencies
         run: npm ci
