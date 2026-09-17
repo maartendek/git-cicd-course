@@ -7,11 +7,11 @@ on:
     branches: [main, develop]
 
 jobs:
-    install:
+  setup:
     uses: ./.github/workflows/setup.yml
 
   test:
-    needs: install
+    needs: setup
     runs-on: ubuntu-latest
     name: Test Suite
 
@@ -27,7 +27,7 @@ jobs:
         run: npm test
 
   lint:
-    needs: install
+    needs: setup
     runs-on: ubuntu-latest
     name: Code Quality
 
@@ -44,10 +44,9 @@ jobs:
         run: npm run lint
 
   build:
-    needs: [test, lint]
+    needs: [setup, test, lint]
     runs-on: ubuntu-latest
     name: Build Application
-
 
     steps:
       - name: Checkout code
@@ -57,7 +56,7 @@ jobs:
         uses: actions/download-artifact@v4.6.2
         with:
           name: node_modules
-          
+
       - name: Build application
         run: npm run build
 

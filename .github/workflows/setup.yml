@@ -5,10 +5,10 @@ on:
     outputs:
       node-version:
         description: "Node version used"
-        value: ${{ jobs.install.outputs.node-version }}
+        value: ${{ jobs.setup.outputs.node-version }}
 
 jobs:
-  install:
+  setup:
     runs-on: ubuntu-latest
     outputs:
       node-version: ${{ steps.node.outputs.version }}
