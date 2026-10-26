@@ -25,7 +25,9 @@ jobs:
           name: node_modules
 
       - name: Restore node_modules permissions
-        run: chmod -R +x node_modules/.bin
+        run: |
+          npm rebuild --ignore-scripts
+          chmod -R +x node_modules/.bin
 
       - name: Run tests
         run: npm test
@@ -45,7 +47,9 @@ jobs:
           name: node_modules
 
       - name: Restore node_modules permissions
-        run: chmod -R +x node_modules/.bin
+        run: |
+          npm rebuild --ignore-scripts
+          chmod -R +x node_modules/.bin
 
       - name: Run ESLint
         run: npm run lint
@@ -65,7 +69,9 @@ jobs:
           name: node_modules
 
       - name: Restore node_modules permissions
-        run: chmod -R +x node_modules/.bin
+        run: |
+          npm rebuild --ignore-scripts
+          chmod -R +x node_modules/.bin
 
       - name: Build application
         run: npm run build
