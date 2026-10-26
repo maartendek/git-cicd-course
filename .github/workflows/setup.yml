@@ -1,0 +1,41 @@
+name: Setup
+
+on:
+  workflow_call:
+    outputs:
+      node-version:
+        description: "Node version used"
+        value: ${{ jobs.setup.outputs.node-version }}
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      node-version: ${{ steps.node.outputs.version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "26"
+          cache: "npm"
+
+      - name: Record Node version
+        id: node
+        run: echo "version=26" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Upload node_modules
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: node_modules
+          path: node_modules/
+          include-hidden-files: true
+          retention-days: 1
