@@ -39,7 +39,7 @@ jobs:
         run: npm run lint
 
   build:
-    needs: [setup, test, lint]
+    needs: [test, lint]
     runs-on: ubuntu-latest
     name: Build Application
 
