@@ -6,12 +6,12 @@ function App() {
 
   return (
     <div className="container">
-      <h1>🚀 Git CI/CD Demo</h1>
+      <h1>🚀 Git CI/CD Demo 6</h1>
       <p className="subtitle">Hello World! from React</p>
       
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          Count is {count}
+          Teller is {count}
         </button>
         <p>
           Click the button to increment the counter.
