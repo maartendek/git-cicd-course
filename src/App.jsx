@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>🚀 Git CI/CD Demo 1</h1>
+      <h1>🚀 Git CI/CD Demo 2</h1>
       <p className="subtitle">Hello World! from React</p>
       
       <div className="card">
