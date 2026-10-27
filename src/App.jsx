@@ -11,7 +11,7 @@ function App() {
       
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          Count is {count}
+          Teller is {count}
         </button>
         <p>
           Click the button to increment the counter.
