@@ -17,17 +17,17 @@ describe('App Component', () => {
 
   it('renders the counter button with initial count of 0', () => {
     render(<App />)
-    const button = screen.getByRole('button', { name: /Count is 0/i })
+    const button = screen.getByRole('button', { name: /Teller is 0/i })
     expect(button).toBeInTheDocument()
   })
 
   it('increments counter when button is clicked', () => {
     render(<App />)
-    const button = screen.getByRole('button', { name: /Count is 0/i })
+    const button = screen.getByRole('button', { name: /Teller is 0/i })
     
     fireEvent.click(button)
     
-    expect(screen.getByRole('button', { name: /Count is 1/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Teller is 1/i })).toBeInTheDocument()
   })
 
   it('increments counter multiple times', () => {
@@ -38,7 +38,7 @@ describe('App Component', () => {
     fireEvent.click(button)
     fireEvent.click(button)
     
-    expect(screen.getByRole('button', { name: /Count is 3/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Teller is 3/i })).toBeInTheDocument()
   })
 
   it('renders the info section', () => {
